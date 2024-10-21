@@ -8,13 +8,16 @@ import { getContainerConfig } from "./RovingTabindexContainer";
  * @param {HTMLElement} el - Current [data-roving-tabindex] element
  * @returns {HTMLElement[]} Sibling tabindex elements
  */
-const getSiblings = el =>
-  Array.from(
-    el.closest(`[${ATTR_CONTAINER}]`).querySelectorAll(`[${ATTR_ITEM}]`)
-  ).filter(
+const getSiblings = el => {
+  const elements = el.closest(`[${ATTR_CONTAINER}]`)?.querySelectorAll(`[${ATTR_ITEM}]`);
+  if (!elements) {
+    return [];
+  }
+  return Array.from(elements).filter(
     $el =>
       $el.closest(`[${ATTR_CONTAINER}]`) === el.closest(`[${ATTR_CONTAINER}]`)
   );
+}
 
 /**
  * Enable an an element's tabindex by it's index
