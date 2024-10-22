@@ -20,6 +20,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "prepare": "rollup -c",
     "preversion": "kacl prerelease",
     "version": "kacl release && prettier --write CHANGELOG.md && git add CHANGELOG.md"
   },
